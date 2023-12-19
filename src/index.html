@@ -3,11 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I wish template variables worked with html-loader</title>
+    <title>Awesome form</title>
 </head>
 <body>
-    <h1>Gorillas below</h1>
-    <p>Remember that webpack watch needs to be reactivated if you update webpack config</p>
-    <img src="./assets/gorillas.jpeg" alt="gorillas">
+    <header>
+        <div class="brand">
+            Awesomeland
+        </div>
+        <ul>
+            <li>Things</li>
+            <li>Stuff</li>
+            <li>Problems</li>
+            <li>Solutions</li>
+        </ul>
+    </header>
+    <main>
+        <div class="blurrer"></div>
+        <form action="#" method="post" novalidate>
+            <h2>Sign up</h2>
+            <fieldset>
+                <legend>Identification</legend>
+                <label for="email">
+                    <span>Email: </span><input type="email" name="email" id="email" required><span class="error"></span>
+                </label>
+            </fieldset>
+            <fieldset>
+                <legend>Location</legend>
+                <label for="country">
+                    <span>Country: </span>
+                    <select name="country" id="country" required>
+                        <option value="CN">China</option>
+                        <option value="US">United States</option>
+                        <option value="BR">Brazil</option>
+                        <option value="RU">Russia</option>
+                    </select>
+                </label>
+                <label for="postal">
+                    <span>Postal code: </span><input type="text" name="postal" id="postal" required><span class="error"></span>
+                </label>
+            </fieldset>
+            <fieldset>
+                <legend>Security</legend>
+                <label for="password">
+                    <span>Password: </span><input type="text" name="password" id="password" minlength="8" maxlength="20" pattern="^\S+$" required><span class="error"></span>
+                </label>
+                <label for="confirmed-password">
+                    <span>Confirm Password: </span><input type="text" name="confirmed-password" id="confirmed-password" minlength="8" maxlength="20" pattern="^\S+$" required><span class="error"></span>
+                </label>
+            </fieldset>
+            <button type="submit">Sign up</button>
+
+        </form>
+    </main>
 </body>
 </html>
