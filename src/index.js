@@ -50,6 +50,7 @@ const validateEmail = (input, errorHolder) => {
         message = 'This is not an email!'; // Don't need to check for min or max since typeMismatch already does that indirectly
     }
 
+    input.classList.remove('initial');
     displayCustomError(errorHolder, message);
     input.setCustomValidity(message);
 };
@@ -66,6 +67,7 @@ const validatePostal = (postInp, errHolder, counSelec) => {
     }
     displayCustomError(errHolder, message);
     postInp.setCustomValidity(message);
+    postInp.classList.remove('initial');
 };
 
 const validatePass = (input, errorHolder) => {
@@ -80,17 +82,20 @@ const validatePass = (input, errorHolder) => {
         message = 'Whitespace is not allowed.';
     }
 
+    input.classList.remove('initial');
     displayCustomError(errorHolder, message);
     input.setCustomValidity(message);
 };
 
-const validateConfirmedPass = (input, ogPassInput, errorHolder) => {
+const validatePasses = (input, ogPassInput, errorHolder, ogErrorHolder) => {
+    validatePass(ogPassInput, ogErrorHolder);
     validatePass(input, errorHolder);
     if (input.value !== ogPassInput.value) {
         const message = 'Passwords do not match.';
         displayCustomError(errorHolder, message);
         input.setCustomValidity(message);
     }
+    input.classList.remove('initial');
 };
 
 emailInput.addEventListener('change', () => {
@@ -106,11 +111,11 @@ countrySel.addEventListener('change', () => {
 });
 
 passInput.addEventListener('change', () => {
-    validatePass(passInput, passError);
+    validatePasses(confirmInput, passInput, confirmError, passError);
 });
 
 confirmInput.addEventListener('change', () => {
-    validateConfirmedPass(confirmInput, passInput, confirmError);
+    validatePasses(confirmInput, passInput, confirmError, passError);
 });
 
 submitButton.addEventListener('click', (e) => {
@@ -118,7 +123,7 @@ submitButton.addEventListener('click', (e) => {
     validateEmail(emailInput, emailError);
     validatePostal(postalInput, postalError, countrySel);
     validatePass(passInput, passError);
-    validateConfirmedPass(confirmInput, passInput, confirmError);
+    validatePasses(confirmInput, passInput, confirmError, passError);
 
     if (form.checkValidity()) {
         form.submit();

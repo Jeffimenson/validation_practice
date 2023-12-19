@@ -196,6 +196,9 @@ input:hover, button[type='submit']:hover, .select-holder:hover {
     background-color: var(--neutral-less-light);
 }
 
+input:not(.initial):invalid {
+    outline: 2px solid var(--semantic-bad);
+}
 
 .error {
     position: absolute;
