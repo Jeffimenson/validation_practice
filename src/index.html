@@ -31,12 +31,14 @@
                 <legend>Location</legend>
                 <label for="country">
                     <span>Country: </span>
-                    <select name="country" id="country" required>
-                        <option value="CN">China</option>
-                        <option value="US">United States</option>
-                        <option value="BR">Brazil</option>
-                        <option value="RU">Russia</option>
-                    </select>
+                    <div class="select-holder">
+                        <select name="country" id="country" required>
+                            <option value="CN">China</option>
+                            <option value="US">United States</option>
+                            <option value="BR">Brazil</option>
+                            <option value="RU">Russia</option>
+                        </select>
+                    </div>
                 </label>
                 <label for="postal">
                     <span>Postal code: </span><input type="text" name="postal" id="postal" required><span class="error"></span>

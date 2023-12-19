@@ -4,7 +4,9 @@
     --secondary: #118ab2ff;
 
     --neutral-dark: #2b303aff;
+    --neutral-less-dark: #4a505e;
     --neutral-light: #ebebebff;
+    --neutral-less-light: #e0e0e0;
     --neutral-light-transP6: rgba(235, 235, 235, 0.6); 
     --neutral-light-transP2: rgba(235, 235, 235, 0.2); 
 
@@ -26,7 +28,7 @@ html, body {
     margin: 0;
 }
 
-button, input, label {
+button, input, label, select {
     box-sizing:content-box;
     border: none;
     background-color: inherit;
@@ -129,7 +131,7 @@ form {
     width: 20vw;
 }
 
-form input {
+form input, .select-holder {
     background-color: var(--neutral-light-transP6);
     border-radius: 7px;
     padding: 0 7px;
@@ -149,6 +151,31 @@ legend {
     width: 100%;
 }
 
+select {
+    appearance: none;
+    background-color: transparent;
+    width: 100%;
+} 
+
+.select-holder {
+    position: relative;
+}
+
+.select-holder::after {
+    position: absolute;
+    content: "";
+    top: 7px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: var(--neutral-dark) transparent transparent transparent;
+}
+
+.select-holder:hover::after {
+    border-color: var(--neutral-less-dark) transparent transparent transparent;
+}
+
 label {
     display: flex;
     flex-direction: column;
@@ -165,8 +192,8 @@ button[type='submit'] {
     margin-top: 18px;
 }
 
-input:hover, button[type='submit']:hover {
-    background-color: var(--neutral-light);
+input:hover, button[type='submit']:hover, .select-holder:hover {
+    background-color: var(--neutral-less-light);
 }
 
 
